@@ -134,7 +134,7 @@ async function aiTurn() {
       if (board[i][j] !== "") moveCount++;
     }
   }
-  if (moveCount <= 6) maxDepth = Math.min(maxDepth, 12);
+  if (moveCount <= 7) maxDepth = Math.min(maxDepth, 12);
 
   // Prioritize center columns first
   const columnOrder = [3, 2, 4, 1, 5, 0, 6];
@@ -302,7 +302,6 @@ function handleClick(column: number) {
 }
 
 const setUp = async () => {
-  randomizeFirstTurn();
   board = [
     ["", "", "", "", "", "", ""],
     ["", "", "", "", "", "", ""],
@@ -326,6 +325,8 @@ const setUp = async () => {
       }
     }
   }
+
+  setTimeout(randomizeFirstTurn, 200);
 };
 
 function Circle({ column }: { column: number }) {
